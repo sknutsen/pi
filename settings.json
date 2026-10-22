@@ -24,6 +24,6 @@
     "npm:pi-cursor-sdk"
   ],
   "lastChangelogVersion": "1.4.0",
-  "defaultProvider": "xai",
-  "defaultModel": "grok-4.7"
+  "defaultProvider": "cursor",
+  "defaultModel": "grok-4.6:fast"
 }
