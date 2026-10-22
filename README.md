@@ -44,11 +44,10 @@ nix profile add .                 # Pi CLI from github:earendil-works/pi/stable
 Home Manager (from `~/.nixconf` or similar):
 
 ```nix
-# flake input: pi-config.url = "git+file:///absolute/path/to/this/repo";
-# then in a home-manager module:
+# flake input: pi-config.url = "github:sknutsen/pi";
 imports = [ inputs.pi-config.homeModules.default ];
 programs.pi-user-config.enable = true;
-programs.pi-user-config.repo = "${config.home.homeDirectory}/Code/pi";
+# Optional: programs.pi-user-config.repo = "/other/clone/pi";
 ```
 
 Without Nix:
