@@ -153,7 +153,11 @@
             home.activation.piUserConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
               repo="${cfg.repo}"
               repo="''${repo/#\~/${config.home.homeDirectory}}"
-              ${lib.getExe pkgs.python3} "$repo/scripts/install.py" --repo "$repo"
+              if [[ ! -f "$repo/scripts/install.py" ]]; then
+                echo "pi-user-config: skipping, clone missing at $repo"
+              else
+                ${lib.getExe pkgs.python3} "$repo/scripts/install.py" --repo "$repo"
+              fi
             '';
           };
         };
