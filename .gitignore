@@ -12,3 +12,9 @@ __pycache__/
 result
 result-*
 .direnv/
+npm/
+models-store.json
+cursor-sdk.json
+**/cursor-sdk.json
+cursor-sdk-model-list.json
+**/cursor-sdk-model-list.json

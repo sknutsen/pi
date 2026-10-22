@@ -22,9 +22,21 @@ A Claude Enterprise seat does **not** include a model API key. claude.ai org API
 
 ## Cursor
 
-Cursor coexists with Pi. Cursor is not Pi's runtime.
+Cursor Desktop is not Pi's runtime. This config installs `pi-cursor-sdk` so Cursor appears in Pi's `/login` as an API-key provider.
 
-Optional later: `pi-cursor-sdk` with a Cursor Dashboard API key (user or service-account). That is not Desktop login. Skip for this setup.
+Allowed:
+
+- A **Cursor Dashboard API key** (user key, or a service-account key from Team settings).
+- `CURSOR_API_KEY` in the environment.
+- `/login` → Use an API key → Cursor. Pi stores it in `auth.json`.
+
+Not allowed:
+
+- Cursor Desktop login.
+- Cursor Agent CLI / `agent status` subscription OAuth.
+- Team Admin API keys (the Cursor SDK does not accept them).
+
+After `/login`, run `/cursor-refresh-models` if the picker still shows only fallback models. Do not put the key in `cursor-sdk.json` or in this repo.
 
 ## GitHub
 

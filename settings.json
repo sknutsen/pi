@@ -2,14 +2,28 @@
   "$schema": "https://pi.dev/schemas/settings.schema.json",
   "defaultThinkingLevel": "medium",
   "defaultProjectTrust": "ask",
-  "defaultTools": ["read", "bash", "edit", "write"],
+  "defaultTools": [
+    "read",
+    "bash",
+    "edit",
+    "write"
+  ],
   "theme": "system",
   "quietStartup": false,
   "enableSkillCommands": true,
   "enableInstallTelemetry": false,
   "enableAnalytics": false,
   "extensions": [],
-  "prompts": ["prompts"],
-  "themes": ["themes"],
-  "packages": []
+  "prompts": [
+    "prompts"
+  ],
+  "themes": [
+    "themes"
+  ],
+  "packages": [
+    "npm:pi-cursor-sdk"
+  ],
+  "lastChangelogVersion": "1.4.0",
+  "defaultProvider": "xai",
+  "defaultModel": "grok-4.7"
 }

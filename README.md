@@ -4,7 +4,7 @@ Git-backed source of truth for this operator's [Pi](https://pi.dev) (`@earendil-
 
 The live agent directory is `~/.pi/agent` unless `PI_CODING_AGENT_DIR` is set. After install, that directory is a set of links into this tree, not an untracked snowflake.
 
-Default UI is the TUI (`@earendil-works/pi-tui`). Extensions, `pi --mode rpc`, and the SDK can drive other UIs later. This repo does not install `pi-rpc-web`, `pi-web-ui`, `pi-code`, or `pi-cursor-sdk`.
+Default UI is the TUI (`@earendil-works/pi-tui`). Extensions, `pi --mode rpc`, and the SDK can drive other UIs later. This repo does not install `pi-rpc-web`, `pi-web-ui`, or `pi-code`. `pi-cursor-sdk` is declared in `settings.json` so `/login` can use a Cursor Dashboard API key.
 
 ## Layout
 
@@ -91,7 +91,7 @@ Windows: `powershell -c "irm https://pi.dev/install.ps1 | iex"`. Authenticate wi
 
 ## Auth
 
-See [docs/auth.md](docs/auth.md). Short version: `pi /login` or env vars; never commit `auth.json`. Claude Console API keys are allowed; Claude Pro/Max/Enterprise subscription OAuth is not.
+See [docs/auth.md](docs/auth.md). Short version: `pi /login` or env vars; never commit `auth.json`. Claude Console API keys are allowed; Claude Pro/Max/Enterprise subscription OAuth is not. Cursor login is a Dashboard API key via `pi-cursor-sdk`, not Desktop OAuth.
 
 ## Skills
 
@@ -109,6 +109,6 @@ Pi discovers Agent Skills from `~/.agents/skills`. agent-kit's `scripts/install.
 
 - Kubernetes, Helm, Docker-in-cluster, cluster YAML
 - Web UI / RPC clients (`pi-rpc-web`, `pi-web-ui`)
-- `pi-code`, `pi-cursor-sdk`
+- `pi-code`
 - A Pi source fork
 - Employer secrets, internal URLs, job-only runbooks
