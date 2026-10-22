@@ -47,8 +47,9 @@ Home Manager (from `~/.nixconf` or similar):
 # flake input: pi-config.url = "github:sknutsen/pi";
 imports = [ inputs.pi-config.homeModules.default ];
 programs.pi-user-config.enable = true;
-# Optional: programs.pi-user-config.repo = "/other/clone/pi";
 ```
+
+Activation clones `https://github.com/sknutsen/pi.git` into `~/Code/pi` (Linux/WSL: `~/code/pi`) when that path is missing. It does not pull an existing checkout.
 
 Without Nix:
 

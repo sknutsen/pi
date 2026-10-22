@@ -148,6 +148,11 @@
                 Nix path — those copy into the store.
               '';
             };
+            remote = lib.mkOption {
+              type = lib.types.str;
+              default = "https://github.com/sknutsen/pi.git";
+              description = "Git URL cloned when repo does not exist. Existing checkouts are left alone.";
+            };
             installPi = lib.mkOption {
               type = lib.types.bool;
               default = true;
@@ -160,10 +165,15 @@
             home.activation.piUserConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
               repo="${cfg.repo}"
               repo="''${repo/#\~/${config.home.homeDirectory}}"
-              if [[ ! -f "$repo/scripts/install.py" ]]; then
-                echo "pi-user-config: skipping, clone missing at $repo"
-              else
-                ${lib.getExe pkgs.python3} "$repo/scripts/install.py" --repo "$repo"
+              if [[ ! -e "$repo" ]]; then
+                echo "pi-user-config: cloning ${cfg.remote} -> $repo"
+                run mkdir -p "$(dirname "$repo")"
+                run ${lib.getExe pkgs.git} clone ${lib.escapeShellArg cfg.remote} "$repo"
+              elif [[ ! -f "$repo/scripts/install.py" ]]; then
+                echo "pi-user-config: $repo exists but is not this checkout; skipping"
+              fi
+              if [[ -f "$repo/scripts/install.py" ]]; then
+                run ${lib.getExe pkgs.python3} "$repo/scripts/install.py" --repo "$repo"
               fi
             '';
           };
