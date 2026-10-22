@@ -32,8 +32,8 @@ Not in git, never created by the installer: `auth.json`, session dumps, a `skill
 Nix hosts (Apple Silicon macOS, Linux, WSL). Clone first — the installer links `~/.pi/agent` to this checkout, not the Nix store:
 
 ```bash
-git clone <this-repo> ~/Code/pi   # or any path you like
-cd ~/Code/pi
+git clone <this-repo> ~/Code/pi   # Linux/WSL: ~/code/pi
+cd ~/Code/pi                      # Linux/WSL: cd ~/code/pi
 nix run .#install
 nix run .#status
 nix profile add .                 # Pi CLI from github:earendil-works/pi/stable
@@ -53,7 +53,7 @@ programs.pi-user-config.enable = true;
 Without Nix:
 
 ```bash
-# macOS, Linux, WSL
+# macOS: ~/Code/pi   Linux/WSL: ~/code/pi
 git clone <this-repo> ~/Code/pi
 cd ~/Code/pi
 python3 scripts/install.py

@@ -134,11 +134,18 @@
             enable = lib.mkEnableOption "Pi CLI and this user-config checkout";
             repo = lib.mkOption {
               type = lib.types.str;
-              default = "${config.home.homeDirectory}/Code/pi";
-              defaultText = lib.literalExpression ''"''${config.home.homeDirectory}/Code/pi"'';
+              default =
+                "${config.home.homeDirectory}/"
+                + (if pkgs.stdenv.hostPlatform.isDarwin then "Code/pi" else "code/pi");
+              defaultText = lib.literalExpression ''
+                if pkgs.stdenv.hostPlatform.isDarwin
+                then "''${config.home.homeDirectory}/Code/pi"
+                else "''${config.home.homeDirectory}/code/pi"
+              '';
               description = ''
-                Working checkout of this repo. Defaults to ~/Code/pi.
-                Must be a string, not a Nix path — those copy into the store.
+                Working checkout of this repo. Defaults to ~/Code/pi on
+                Darwin and ~/code/pi on Linux/WSL. Must be a string, not a
+                Nix path — those copy into the store.
               '';
             };
             installPi = lib.mkOption {
