@@ -1,0 +1,14 @@
+auth.json
+**/auth.json
+sessions/
+*.log
+.env
+.env.*
+node_modules/
+.DS_Store
+__pycache__/
+*.pyc
+.mypy_cache/
+result
+result-*
+.direnv/

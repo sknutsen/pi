@@ -1,0 +1,15 @@
+{
+  "$schema": "https://pi.dev/schemas/settings.schema.json",
+  "defaultThinkingLevel": "medium",
+  "defaultProjectTrust": "ask",
+  "defaultTools": ["read", "bash", "edit", "write"],
+  "theme": "system",
+  "quietStartup": false,
+  "enableSkillCommands": true,
+  "enableInstallTelemetry": false,
+  "enableAnalytics": false,
+  "extensions": [],
+  "prompts": ["prompts"],
+  "themes": ["themes"],
+  "packages": []
+}
